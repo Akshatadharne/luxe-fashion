@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop All — LUXE Fashion</title>
+  <link rel="stylesheet" href="../css/reset.css"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/animations.css"/>
+  <link rel="stylesheet" href="../css/shop.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <p>✦ Free Shipping on orders above ₹2999 &nbsp;|&nbsp; Use code <strong>LUXE20</strong> for 20% off ✦</p>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
+    <div class="nav-left">
+      <a href="../index.html" class="nav-link">New In</a>
+      <a href="shop.html" class="nav-link active-link">Shop</a>
+      <a href="../index.html#collections" class="nav-link">Collections</a>
+    </div>
+    <a href="../index.html" class="nav-logo">LUXE</a>
+    <div class="nav-right">
+      <a href="#" class="nav-link">About</a>
+      <button class="icon-btn" onclick="toggleSearch()">🔍</button>
+      <button class="icon-btn" onclick="toggleWishlist()">🤍 <span class="wish-count" id="wishCount">0</span></button>
+      <button class="icon-btn" onclick="toggleCart()">🛍 <span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-mobile" onclick="toggleMobileMenu()">✕</button>
+    <a href="../index.html">Home</a>
+    <a href="shop.html">Shop All</a>
+    <a href="#">Collections</a>
+    <a href="#">About</a>
+  </div>
+
+  <div class="search-bar" id="searchBar">
+    <input type="text" id="searchInput" placeholder="Search styles..." oninput="handleSearch(this.value)"/>
+    <button onclick="toggleSearch()">✕</button>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="shop-header">
+    <p class="section-tag">Our Collection</p>
+    <h1>Shop <em>All</em></h1>
+    <p class="shop-sub">Discover our curated edit of premium fashion</p>
+  </div>
+
+  <!-- SHOP LAYOUT -->
+  <div class="shop-layout">
+    <!-- SIDEBAR FILTERS -->
+    <aside class="shop-sidebar">
+      <div class="filter-group">
+        <h4>Category</h4>
+        <label><input type="radio" name="cat" value="all" checked onchange="shopFilter('all')"/> All Items</label>
+        <label><input type="radio" name="cat" value="women" onchange="shopFilter('women')"/> Women</label>
+        <label><input type="radio" name="cat" value="men" onchange="shopFilter('men')"/> Men</label>
+        <label><input type="radio" name="cat" value="accessories" onchange="shopFilter('accessories')"/> Accessories</label>
+        <label><input type="radio" name="cat" value="footwear" onchange="shopFilter('footwear')"/> Footwear</label>
+      </div>
+      <div class="filter-group">
+        <h4>Price Range</h4>
+        <label><input type="radio" name="price" value="all" checked onchange="priceFilter('all')"/> All Prices</label>
+        <label><input type="radio" name="price" value="low" onchange="priceFilter('low')"/> Under ₹3,000</label>
+        <label><input type="radio" name="price" value="mid" onchange="priceFilter('mid')"/> ₹3,000 – ₹6,000</label>
+        <label><input type="radio" name="price" value="high" onchange="priceFilter('high')"/> Above ₹6,000</label>
+      </div>
+      <div class="filter-group">
+        <h4>Sort By</h4>
+        <select onchange="sortProducts(this.value)">
+          <option value="default">Featured</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </div>
+    </aside>
+
+    <!-- PRODUCTS -->
+    <div class="shop-main">
+      <div class="shop-toolbar">
+        <p class="results-count" id="resultsCount">Showing 8 products</p>
+        <div class="view-toggle">
+          <button onclick="setView('grid')" id="gridBtn" class="view-btn active-view">⊞</button>
+          <button onclick="setView('list')" id="listBtn" class="view-btn">☰</button>
+        </div>
+      </div>
+      <div class="products-grid" id="shopGrid"></div>
+    </div>
+  </div>
+
+  <!-- OVERLAYS -->
+  <div class="overlay" id="overlay" onclick="closeAll()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="sidebar-header">
+      <h3>Your Bag <span id="cartItemCount">(0)</span></h3>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer" id="cartFooter"></div>
+  </div>
+  <div class="cart-sidebar wishlist-sidebar" id="wishlistSidebar">
+    <div class="sidebar-header">
+      <h3>Wishlist <span id="wishItemCount">(0)</span></h3>
+      <button onclick="toggleWishlist()">✕</button>
+    </div>
+    <div class="cart-items" id="wishlistItems"></div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/shop.js"></script>
+</body>
+</html>

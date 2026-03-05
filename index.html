@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUXE — Premium Fashion Store</title>
+  <link rel="stylesheet" href="css/reset.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-text">LUXE</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    <p>✦ Free Shipping on orders above ₹2999 &nbsp;|&nbsp; Use code <strong>LUXE20</strong> for 20% off ✦</p>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
+    <div class="nav-left">
+      <a href="index.html" class="nav-link">New In</a>
+      <a href="pages/shop.html" class="nav-link">Shop</a>
+      <a href="#collections" class="nav-link">Collections</a>
+    </div>
+    <a href="index.html" class="nav-logo">LUXE</a>
+    <div class="nav-right">
+      <a href="#" class="nav-link">About</a>
+      <button class="icon-btn" onclick="toggleSearch()" title="Search">🔍</button>
+      <button class="icon-btn wishlist-btn" onclick="toggleWishlist()" title="Wishlist">
+        🤍 <span class="wish-count" id="wishCount">0</span>
+      </button>
+      <button class="icon-btn cart-btn" onclick="toggleCart()" title="Cart">
+        🛍 <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-mobile" onclick="toggleMobileMenu()">✕</button>
+    <a href="index.html">Home</a>
+    <a href="pages/shop.html">Shop All</a>
+    <a href="#collections">Collections</a>
+    <a href="#">About</a>
+  </div>
+
+  <!-- SEARCH BAR -->
+  <div class="search-bar" id="searchBar">
+    <input type="text" id="searchInput" placeholder="Search for styles, brands, trends..." oninput="handleSearch(this.value)"/>
+    <button onclick="toggleSearch()">✕</button>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal">— Spring / Summer 2025</p>
+      <h1 class="hero-title reveal">
+        Dress the<br/>
+        <em>Story</em> You<br/>
+        Want to Tell
+      </h1>
+      <p class="hero-sub reveal">Curated luxury fashion for the modern soul</p>
+      <div class="hero-ctas reveal">
+        <a href="pages/shop.html" class="btn-primary">Explore Collection</a>
+        <a href="#collections" class="btn-ghost">View Lookbook</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span>500+</span><p>Styles</p></div>
+      <div class="stat"><span>50K+</span><p>Customers</p></div>
+      <div class="stat"><span>4.9★</span><p>Rating</p></div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories-section">
+    <div class="section-header">
+      <p class="section-tag">Shop by Category</p>
+      <h2 class="section-title">Find Your Style</h2>
+    </div>
+    <div class="categories-grid" id="categoriesGrid"></div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="products-section">
+    <div class="section-header">
+      <p class="section-tag">Handpicked For You</p>
+      <h2 class="section-title">New Arrivals</h2>
+      <a href="pages/shop.html" class="view-all-link">View All →</a>
+    </div>
+    <div class="filter-strip" id="filterStrip"></div>
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <!-- BANNER -->
+  <section class="promo-banner" id="collections">
+    <div class="promo-content">
+      <p class="promo-tag">Limited Edition</p>
+      <h2>The Evening<br/><em>Edit</em></h2>
+      <p class="promo-sub">Exclusive pieces for your finest moments</p>
+      <a href="pages/shop.html" class="btn-primary light">Shop the Edit</a>
+    </div>
+    <div class="promo-visual">
+      <div class="promo-shapes">
+        <div class="shape s1"></div>
+        <div class="shape s2"></div>
+        <div class="shape s3"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="section-header">
+      <p class="section-tag">What They Say</p>
+      <h2 class="section-title">Customer Love</h2>
+    </div>
+    <div class="testimonials-grid" id="testimonialsGrid"></div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <div class="newsletter-content">
+      <p class="section-tag">Stay in the Loop</p>
+      <h2>Get Exclusive<br/><em>Access</em></h2>
+      <p>Be first to know about new drops, private sales & style tips</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your email address" id="emailInput"/>
+        <button onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>LUXE</h3>
+        <p>Premium fashion crafted for those who appreciate the finer things in life.</p>
+        <div class="social-links">
+          <a href="#">📸</a><a href="#">🐦</a><a href="#">💼</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <a href="#">New Arrivals</a>
+          <a href="#">Women</a>
+          <a href="#">Men</a>
+          <a href="#">Accessories</a>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <a href="#">FAQs</a>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 LUXE Fashion. All rights reserved.</p>
+      <p>Made with ♥ for fashion lovers</p>
+    </div>
+  </footer>
+
+  <!-- CART SIDEBAR -->
+  <div class="overlay" id="overlay" onclick="closeAll()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="sidebar-header">
+      <h3>Your Bag <span id="cartItemCount">(0)</span></h3>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer" id="cartFooter"></div>
+  </div>
+
+  <!-- WISHLIST SIDEBAR -->
+  <div class="cart-sidebar wishlist-sidebar" id="wishlistSidebar">
+    <div class="sidebar-header">
+      <h3>Wishlist <span id="wishItemCount">(0)</span></h3>
+      <button onclick="toggleWishlist()">✕</button>
+    </div>
+    <div class="cart-items" id="wishlistItems"></div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
